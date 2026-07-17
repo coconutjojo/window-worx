@@ -1,0 +1,95 @@
+/* ===========================
+   Custom Inline SVG Icons
+   Using Heroicons-style SVGs
+   =========================== */
+
+.icon-svg {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.icon-svg-sm {
+  width: 20px;
+  height: 20px;
+}
+
+.icon-svg-lg {
+  width: 32px;
+  height: 32px;
+}
+
+.icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Icon colors for different contexts */
+.icon-primary { color: var(--color-primary); }
+.icon-secondary { color: var(--color-secondary); }
+.icon-white { color: white; }
+.icon-muted { color: var(--color-text-light); }
+
+/* Service card icons */
+.service-card .icon {
+  width: 56px;
+  height: 56px;
+  background: var(--color-secondary-light);
+  border-radius: var(--border-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.service-card .icon .icon-svg {
+  width: 28px;
+  height: 28px;
+  color: var(--color-primary);
+}
+
+/* Hero badge icons */
+.hero-badge .icon-svg {
+  width: 18px;
+  height: 18px;
+  color: var(--color-secondary);
+}
+
+/* Footer contact icons */
+.footer-contact .icon .icon-svg {
+  width: 18px;
+  height: 18px;
+  color: var(--color-secondary);
+}
+
+/* Value section icons */
+.value-item .icon .icon-svg {
+  width: 32px;
+  height: 32px;
+  color: var(--color-primary);
+}
+
+/* Sidebar phone icons */
+.sidebar-card .icon-svg {
+  width: 20px;
+  height: 20px;
+  color: var(--color-primary);
+}
+
+/* Info box heading icons */
+h4 .icon-svg {
+  width: 22px;
+  height: 22px;
+  vertical-align: middle;
+  margin-right: 4px;
+  color: var(--color-primary);
+}
