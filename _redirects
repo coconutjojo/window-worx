@@ -1,0 +1,11 @@
+# Old WordPress 301 Redirects
+/wp-content/*    /   301
+/wp-*    /   301
+/category/*    /blog/   301
+/tag/*    /blog/   301
+/author/*    /about.html   301
+/feed/    /blog/   301
+/comments/feed/    /   301
+
+# SEO: force trailing slash for clean URLs (optional)
+# /services    /services/   301

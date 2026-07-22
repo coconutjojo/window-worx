@@ -15,26 +15,27 @@ Project Structure:
 ├── faq.html
 ├── contact.html
 ├── pricing-guide.html
+├── 404.html
 ├── blog/
 │   ├── index.html
-│   ├── how-often-clean-windows.html
-│   ├── diy-vs-professional-window-cleaning.html
-│   ├── window-cleaning-spring-guide-iowa.html
-│   └── ... (more posts)
+│   └── ... (10 blog posts)
+├── cities/
+│   └── ... (26 city landing pages)
 ├── css/
 │   └── style.css
 ├── js/
-│   └── main.js
+│   ├── main.js
+│   └── icons.js
 ├── images/
-│   ├── logo.svg
-│   ├── hero-bg.webp
-│   └── (add your photos here)
-├── notes-planning.md            # This file
-└── README.md                    # Deployment instructions
-
+│   └── (logos, photos, city images)
+├── PLANNING.md                  # Full planning document
+├── netlify.toml                 # Netlify deployment config
+├── _redirects                   # 301 redirects from old WordPress URLs
+├── robots.txt
+└── sitemap.xml
 Tech: Pure HTML + CSS + JS — zero dependencies, ultra-fast.
-Hosting: Netlify / Cloudflare Pages / Vercel (free tier)
-CDN: Built-in with any of the above
+Hosting: Netlify (free tier)
+CDN: Built-in with Netlify
 Analytics: Google Analytics (GA4) via snippet
 Forms: Netlify Forms (free, no backend needed)
-Chat: Tawk.to (free) — optional
+
