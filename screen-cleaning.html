@@ -101,25 +101,52 @@
         <aside class="sidebar">
           <div class="sidebar-card">
             <h4>Add Screen Cleaning</h4>
-            <p style="font-size: 0.9rem; color: var(--color-text-light); margin-bottom: 1rem;">Ask about adding screen cleaning to your window cleaning service.</p>
-            <form name="quote-screens" method="POST" data-netlify="true">
+            <p style="font-size: 0.9rem; color: var(--color-text-light); margin-bottom: 1rem;">Ask about adding screen clean            <form name="quote-screens" method="POST" data-netlify="true">
               <input type="hidden" name="form-name" value="quote-screens">
               <div class="form-group">
-                <label for="name">Name</label>
+                <label for="name">Full Name *</label>
                 <input type="text" id="name" name="name" required>
               </div>
               <div class="form-group">
-                <label for="phone">Phone</label>
+                <label for="phone">Phone *</label>
                 <input type="tel" id="phone" name="phone" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+              <div class="form-group">
+                <label for="street-address">Street Address *</label>
+                <input type="text" id="street-address" name="street-address" placeholder="e.g. 123 Main St" required>
+              </div>
+              <div class="form-group">
+                <label for="city">City *</label>
+                <input type="text" id="city" name="city" required>
               </div>
               <div class="form-group">
                 <label for="screens">Approx. number of screens?</label>
                 <select id="screens" name="screens">
+                  <option value="">Select...</option>
                   <option value="1-10">1-10 screens</option>
                   <option value="11-20">11-20 screens</option>
                   <option value="21-30">21-30 screens</option>
                   <option value="31+">31+ screens</option>
                 </select>
+              </div>
+              <div class="form-group">
+                <label for="timeframe">Preferred Timeframe *</label>
+                <select id="timeframe" name="timeframe" required>
+                  <option value="">Select...</option>
+                  <option value="asap">ASAP</option>
+                  <option value="this-week">This week</option>
+                  <option value="next-week">Next week</option>
+                  <option value="this-month">This month</option>
+                  <option value="flexible">Flexible</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="message">Description of needs</label>
+                <textarea id="message" name="message" rows="3" placeholder="Any details about your screens..."></textarea>
               </div>
               <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Get Free Quote</button>
             </form>
