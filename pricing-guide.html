@@ -19,14 +19,18 @@
   <meta property="og:locale" content="en_US">
   <meta name="twitter:card" content="summary_large_image">
 
-  <!-- Google Analytics (GA4) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-706TBFHW4C"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-706TBFHW4C');
-  </script>
+    <!-- Google Analytics (GA4) with hostname check -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-706TBFHW4C"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+  
+      // Only track on the real domain to prevent analytics spam
+      if (window.location.hostname === 'window-worx.com' || window.location.hostname.endsWith('.netlify.app')) {
+        gtag('js', new Date());
+        gtag('config', 'G-706TBFHW4C');
+      }
+    </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

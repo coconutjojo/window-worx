@@ -17,13 +17,17 @@
   <meta property="og:image" content="https://window-worx.com/images/social-share.jpg">
   <meta property="og:url" content="https://window-worx.com/404.html">
 
-  <!-- Google Analytics (GA4) -->
+  <!-- Google Analytics (GA4) with hostname check -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-706TBFHW4C"></script>
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+
+  // Only track on the real domain to prevent analytics spam
+  if (window.location.hostname === 'window-worx.com' || window.location.hostname.endsWith('.netlify.app')) {
     gtag('js', new Date());
     gtag('config', 'G-706TBFHW4C');
+  }
   </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
