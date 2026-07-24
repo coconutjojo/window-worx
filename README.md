@@ -28,7 +28,6 @@ Project Structure:
 │   └── icons.js
 ├── images/
 │   └── (logos, photos, city images)
-├── PLANNING.md                  # Full planning document
 ├── netlify.toml                 # Netlify deployment config
 ├── _redirects                   # 301 redirects from old WordPress URLs
 ├── robots.txt
