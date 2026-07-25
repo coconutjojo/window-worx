@@ -59,26 +59,39 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // ----- Hero Parallax Effect -----
+  // ----- Hero Parallax Effect (optimized: no forced reflow) -----
   const heroBg = document.querySelector('.hero-full .hero-bg');
   
+  let ticking = false;
   if (heroBg) {
     window.addEventListener('scroll', function() {
       const scrollPos = window.pageYOffset;
-      // Subtle parallax shift: move at 35% of scroll speed
-      heroBg.style.transform = 'translateY(' + (scrollPos * 0.35) + 'px)';
+      if (!ticking) {
+        requestAnimationFrame(function() {
+          heroBg.style.transform = 'translateY(' + (scrollPos * 0.35) + 'px)';
+          ticking = false;
+        });
+        ticking = true;
+      }
     });
   }
 
-  // ----- Back to Top Button -----
+  // ----- Back to Top Button (optimized) -----
   const backToTop = document.querySelector('.back-to-top');
 
   if (backToTop) {
+    let backToTopTicking = false;
     window.addEventListener('scroll', function() {
-      if (window.pageYOffset > 400) {
-        backToTop.classList.add('visible');
-      } else {
-        backToTop.classList.remove('visible');
+      if (!backToTopTicking) {
+        requestAnimationFrame(function() {
+          if (window.pageYOffset > 400) {
+            backToTop.classList.add('visible');
+          } else {
+            backToTop.classList.remove('visible');
+          }
+          backToTopTicking = false;
+        });
+        backToTopTicking = true;
       }
     });
 
@@ -178,22 +191,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // ----- Animate on Scroll (simple) -----
+  // ----- Animate on Scroll (optimized: batch reads, no forced reflow) -----
   const animateElements = document.querySelectorAll('.service-card, .testimonial-card, .process-step, .city-item, .value-item, .pricing-card, .blog-card');
 
-  function checkVisibility() {
-    animateElements.forEach(el => {
-      const rect = el.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-
-      if (rect.top < windowHeight - 50) {
-        el.style.opacity = '1';
-        el.style.transform = 'translateY(0)';
-      }
-    });
-  }
-
-  // Set initial state
+  // Set initial state (write only)
   animateElements.forEach(el => {
     if (!el.style.transform) {
       el.style.opacity = '0';
@@ -202,7 +203,30 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  window.addEventListener('scroll', checkVisibility);
+  let visibilityTicking = false;
+  function checkVisibility() {
+    const windowHeight = window.innerHeight;
+    // Batch read: collect all element positions first
+    const rects = [];
+    animateElements.forEach((el, i) => {
+      rects[i] = el.getBoundingClientRect();
+    });
+    // Batch write: apply visibility after all reads
+    animateElements.forEach((el, i) => {
+      if (rects[i].top < windowHeight - 50) {
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      }
+    });
+    visibilityTicking = false;
+  }
+
+  window.addEventListener('scroll', function() {
+    if (!visibilityTicking) {
+      requestAnimationFrame(checkVisibility);
+      visibilityTicking = true;
+    }
+  });
   window.addEventListener('load', checkVisibility);
   checkVisibility(); // Initial check
 
